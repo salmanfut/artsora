@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>アート・宙｜熊野の木×パッシブ設計｜三重の注文住宅・リフォーム</title>
+<meta name="description" content="熊野の木×パッシブ設計で、三重の気候に寄り添う住まいへ。無料相談・資料請求受付中。" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ─────────────────────────────────────────────
+   TOKENS（アート・宙寄せ：自然素材トーン）
+───────────────────────────────────────────── */
+:root{
+  --bg:#F7F5F0;
+  --bg-warm:#F0EDE6;
+  --card:#FDFCF9;
+  --text:#222222;
+  --sub:#666660;
+  --mute:#999990;
+  --rule:#E6E2DA;
+  --sand:#C9B79C;
+  --sandLt:#E8DDD0;
+  --green:#5E6B5B;
+
+  --serif:'Noto Serif JP','游明朝','Hiragino Mincho ProN',serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
+  --mono:'Montserrat',sans-serif;
+
+  --r6:6px; --r10:10px; --r16:16px;
+  --shadow:0 8px 26px rgba(0,0,0,.06);
+
+  --sp12:12px; --sp16:16px; --sp24:24px; --sp32:32px; --sp48:48px; --sp64:64px; --sp80:80px;
+}
+
+/* ─────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer}
+.container{max-width:1080px;margin:0 auto;padding:0 var(--sp24)}
+.narrow{max-width:820px;margin:0 auto;padding:0 var(--sp24)}
+.section{padding:var(--sp80) 0}
+.alt{background:var(--bg-warm)}
+.divider{height:1px;background:var(--rule)}
+/* small helpers */
+.kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--green);
+  display:inline-block;
+  margin-bottom:12px;
+}
+h1,h2,h3{font-family:var(--serif);letter-spacing:.02em}
+h1{font-size:clamp(28px,4.6vw,50px);line-height:1.25}
+h2{font-size:clamp(22px,3.2vw,34px);line-height:1.35}
+h3{font-size:clamp(16px,2.2vw,20px);line-height:1.45}
+.lead{color:var(--sub);font-size:clamp(15px,1.7vw,17px)}
+.note{color:var(--mute);font-size:12px;line-height:1.6}
+
+/* ─────────────────────────────────────────────
+   HEADER
+───────────────────────────────────────────── */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(247,245,240,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+  transition:box-shadow .25s;
+}
+.header.scrolled{box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.header__in{
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  max-width:1080px;margin:0 auto;padding:0 var(--sp24);
+}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand b{font-family:var(--serif);font-size:18px}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--mute);margin-top:4px}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{font-size:13px;color:var(--sub)}
+.nav a:hover{color:var(--text)}
+.header__cta{display:flex;gap:8px;align-items:center}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border-radius:var(--r6);
+  border:1px solid transparent;font-size:14px;font-weight:500;
+  letter-spacing:.04em;white-space:nowrap;transition:.2s;
+}
+.btn--p{background:var(--text);color:#fff;border-color:var(--text)}
+.btn--p:hover{opacity:.9}
+.btn--o{background:transparent;color:var(--text);border-color:var(--text)}
+.btn--o:hover{background:var(--sandLt)}
+.btn--lg{padding:14px 26px;font-size:15px}
+.btnRow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* ─────────────────────────────────────────────
+   MODE TABS（CG / 診断 / イラスト）
+───────────────────────────────────────────── */
+.modeBar{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  margin:18px 0 0;
+}
+.modeTab{
+  font-family:var(--mono);
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 14px;border-radius:999px;
+  border:1px solid var(--rule);
+  background:var(--card);
+  color:var(--sub);
+  transition:.2s;
+}
+.modeTab:hover{border-color:var(--sand)}
+.modeTab[aria-pressed="true"]{
+  background:var(--text);color:#fff;border-color:var(--text);
+}
+
+/* ─────────────────────────────────────────────
+   HERO（FV）
+───────────────────────────────────────────── */
+.hero{padding-top:64px;min-height:92vh;display:grid;grid-template-columns:1.2fr 1fr;gap:0}
+.hero__visual{min-height:520px;position:relative}
+.ph{
+  background:var(--sandLt);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--mute);
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-align:center;padding:20px;
+}
+.hero__copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--sp64) var(--sp64) var(--sp64) var(--sp48);
+}
+.hero__copy h1{margin:10px 0 18px}
+.hero__copy .lead{max-width:520px}
+.trust{
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);
+  display:flex;gap:16px;flex-wrap:wrap
+}
+.trust span{
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mute);display:flex;align-items:center;gap:8px
+}
+.trust span::before{content:"";width:18px;height:1px;background:var(--sand);display:inline-block}
+
+/* Hero slots (mode switch) */
+[data-slot]{display:none;}
+body[data-mode="cg"] [data-slot="hero-slot-cg"]{display:block;}
+body[data-mode="diagnosis"] [data-slot="hero-slot-diagnosis"]{display:block;}
+body[data-mode="illustration"] [data-slot="hero-slot-illustration"]{display:block;}
+
+.heroCard{
+  margin-top:18px;
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  padding:16px 18px;
+  max-width:520px;
+}
+.heroCard__title{
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mute);margin-bottom:10px
+}
+.miniGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.miniBox{
+  border:1px solid var(--rule);
+  border-radius:var(--r6);
+  padding:12px;background:var(--bg-warm)
+}
+.miniBox b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-bottom:6px}
+.miniBox p{font-size:12px;color:var(--sub);line-height:1.6}
+
+/* ─────────────────────────────────────────────
+   SECTION HEAD
+───────────────────────────────────────────── */
+.secHead{margin-bottom:var(--sp32)}
+.secHead.center{text-align:center}
+.secHead .lead{margin-top:12px;max-width:640px}
+.secHead.center .lead{margin:12px auto 0}
+
+/* ─────────────────────────────────────────────
+   3 POINTS / GRID CARDS
+───────────────────────────────────────────── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  padding:22px 20px;
+  box-shadow:var(--shadow);
+}
+.card p{color:var(--sub);font-size:14px;line-height:1.8;margin-top:8px}
+.icon{
+  width:44px;height:44px;border-radius:var(--r10);
+  background:var(--bg-warm);
+  border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:12px;
+}
+.icon svg{width:24px;height:24px;stroke:var(--green)}
+/* mode swap in section 2 & 3 */
+body[data-mode="cg"] [data-slot="points-cg"]{display:contents;}
+body[data-mode="diagnosis"] [data-slot="points-diagnosis"]{display:contents;}
+body[data-mode="illustration"] [data-slot="points-illustration"]{display:contents;}
+
+.stack{display:grid;gap:10px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.check{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r6);
+  padding:14px 14px;
+  font-size:14px;color:var(--sub);line-height:1.6;
+}
+.check:hover{border-color:var(--sand)}
+
+/* Diagnosis UI */
+.diaBox{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.diaQ{display:grid;gap:10px;margin-top:12px}
+.diaRow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sel{
+  width:100%;
+  padding:11px 12px;border-radius:var(--r6);
+  border:1px solid var(--rule);
+  background:var(--bg);
+  color:var(--text);
+}
+.diaActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+/* ─────────────────────────────────────────────
+   PROOF (cases + voices small)
+───────────────────────────────────────────── */
+.proofGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:start}
+.caseRow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.voiceList{display:grid;gap:10px}
+.voice{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  padding:16px 16px;
+}
+.voice b{font-size:13px}
+.voice p{font-size:13px;color:var(--sub);margin-top:6px;line-height:1.75}
+.voice small{display:block;margin-top:10px;color:var(--mute);font-size:12px}
+
+/* ─────────────────────────────────────────────
+   PRICE MINI
+───────────────────────────────────────────── */
+.priceWrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.priceMini{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.bar{height:8px;border-radius:999px;background:var(--bg-warm);overflow:hidden;border:1px solid var(--rule)}
+.fill{height:100%;background:linear-gradient(90deg,var(--sand),var(--green))}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.row span{font-size:13px;color:var(--sub)}
+.row em{font-family:var(--mono);font-size:12px;color:var(--mute);font-style:normal}
+.list{margin-top:10px;display:grid;gap:6px}
+.list li{list-style:none;font-size:13px;color:var(--sub);display:flex;gap:8px;align-items:flex-start}
+.list li::before{content:"—";color:var(--sand);flex-shrink:0}
+
+/* ─────────────────────────────────────────────
+   FAQ
+───────────────────────────────────────────── */
+.faq{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r10);
+  overflow:hidden;
+}
+.faqItem{border-bottom:1px solid var(--rule)}
+.faqItem:last-child{border-bottom:none}
+.faqQ{
+  width:100%;text-align:left;background:none;border:none;
+  padding:16px 16px;display:flex;justify-content:space-between;gap:12px;
+  font-size:14px;font-weight:500;color:var(--text)
+}
+.faqQ:hover{background:var(--bg-warm)}
+.badge{
+  width:20px;height:20px;border-radius:50%;
+  border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--mute);transition:.2s
+}
+.faqItem.open .badge{transform:rotate(45deg);background:var(--sandLt);border-color:var(--sand);color:var(--text)}
+.faqA{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.faqAin{padding:0 16px 16px;color:var(--sub);font-size:14px;line-height:1.8}
+.faqItem.open .faqA{max-height:220px}
+
+.misTitle{margin-top:16px;font-size:14px;font-weight:500}
+.mis{margin-top:10px;display:grid;gap:8px}
+.mis div{
+  background:var(--card);
+  border:1px solid var(--rule);
+  border-radius:var(--r6);
+  padding:12px 12px;
+  font-size:13px;color:var(--sub);
+  display:grid;gap:6px
+}
+.mis s{color:var(--mute)}
+.mis b{font-weight:500;color:var(--text)}
+
+/* ─────────────────────────────────────────────
+   FINAL CTA (form short)
+───────────────────────────────────────────── */
+.final{
+  background:var(--text);
+  color:#fff;
+  padding:var(--sp80) 0;
+}
+.final .kicker{color:var(--sand)}
+.final .lead{color:rgba(255,255,255,.62)}
+.ctaGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.ctaCard{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  border-radius:var(--r10);
+  padding:18px;
+}
+.ctaCard h3{color:#fff}
+.ctaCard p{color:rgba(255,255,255,.62);font-size:13px;margin-top:8px;line-height:1.75}
+.form{margin-top:14px;display:grid;gap:10px}
+.inp{
+  width:100%;
+  padding:11px 12px;
+  border-radius:var(--r6);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  outline:none;
+}
+.inp::placeholder{color:rgba(255,255,255,.35)}
+.submit{
+  padding:13px 12px;border-radius:var(--r6);border:none;
+  background:linear-gradient(135deg,var(--sand), #A08060);
+  color:#fff;font-weight:600;letter-spacing:.06em;
+}
+.submit:hover{opacity:.92}
+.assure{margin-top:16px;text-align:center;color:rgba(255,255,255,.45);font-size:12px;line-height:1.6}
+
+/* ─────────────────────────────────────────────
+   FOOTER + MOBILE BAR
+───────────────────────────────────────────── */
+.footer{padding:36px 0;background:#1A1A18;color:rgba(255,255,255,.55)}
+.footer .brand b{color:rgba(255,255,255,.9)}
+.footer small{color:rgba(255,255,255,.35)}
+.footer .row2{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;margin-top:14px;border-top:1px solid rgba(255,255,255,.1);padding-top:14px}
+
+.mbar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(247,245,240,.95);
+  border-top:1px solid var(--rule);
+  padding:10px 12px;
+  padding-bottom:max(10px, env(safe-area-inset-bottom));
+  gap:10px;
+}
+.mbar a{flex:1}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────────── */
+@media (max-width:980px){
+  .nav{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero__visual{min-height:280px}
+  .hero__copy{padding:var(--sp48) var(--sp24)}
+  .grid3{grid-template-columns:1fr;gap:12px}
+  .proofGrid,.priceWrap{grid-template-columns:1fr}
+  .caseRow{grid-template-columns:1fr 1fr}
+  .checks{grid-template-columns:1fr}
+  .ctaGrid{grid-template-columns:1fr}
+  .mbar{display:flex}
+}
+@media (max-width:560px){
+  .caseRow{grid-template-columns:1fr}
+  .section{padding:var(--sp64) 0}
+}
+</style>
+</head>
+
+<body data-mode="cg">
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header__in">
+    <div class="brand">
+      <b>アート・宙</b>
+      <small>Mie · Custom Home &amp; Reform</small>
+    </div>
+    <nav class="nav">
+      <a href="#points">特徴</a>
+      <a href="#proof">施工事例</a>
+      <a href="#price">価格帯</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header__cta">
+      <a class="btn btn--o" href="#contact">資料請求</a>
+      <a class="btn btn--p" href="#contact">無料相談</a>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION 1: HERO -->
+<section class="hero" id="top">
+  <div class="hero__visual">
+    <div class="ph" style="border-radius:0; border-left:none; border-right:none; border-top:none;">
+      施工写真（FVメイン）<br/>木の質感・自然光・LDK
+    </div>
+  </div>
+
+  <div class="hero__copy">
+    <span class="kicker">三重の注文住宅・リフォーム</span>
+    <h1>家をつくる、<br/>暮らしを紡ぐ。</h1>
+    <p class="lead">
+      熊野の木とパッシブの考え方で、季節に寄り添う住まいへ。<br/>
+      “好き”と“暮らしやすさ”を切り離さない設計をご提案します。
+    </p>
+
+    <!-- MODE TABS -->
+    <div class="modeBar" aria-label="訴求モード切替">
+      <button class="modeTab" data-mode-btn="cg" aria-pressed="true">CG</button>
+      <button class="modeTab" data-mode-btn="diagnosis" aria-pressed="false">適正診断</button>
+      <button class="modeTab" data-mode-btn="illustration" aria-pressed="false">イラスト</button>
+    </div>
+
+    <!-- HERO SLOT: CG -->
+    <div class="heroCard" data-slot="hero-slot-cg">
+      <div class="heroCard__title">Passive Design — 夏/冬の考え方</div>
+      <div class="miniGrid">
+        <div class="miniBox">
+          <b>Summer</b>
+          <p>深い軒で日射を遮り、室内の熱を抑えやすくします。</p>
+        </div>
+        <div class="miniBox">
+          <b>Winter</b>
+          <p>低い日差しを取り込み、日中の心地よさにつなげます。</p>
+        </div>
+      </div>
+      <p class="note" style="margin-top:10px;">※敷地条件により設計の最適解は変わります。</p>
+    </div>
+
+    <!-- HERO SLOT: DIAGNOSIS -->
+    <div class="heroCard" data-slot="hero-slot-diagnosis">
+      <div class="heroCard__title">30秒｜家づくり適正診断</div>
+      <p class="note">いまの状態を選ぶだけで、次の一歩が整理できます。</p>
+      <div class="miniGrid" style="margin-top:10px">
+        <div class="miniBox"><b>土地</b><p>未定 / 候補あり / 決定</p></div>
+        <div class="miniBox"><b>優先</b><p>動線 / 素材 / 快適性</p></div>
+      </div>
+    </div>
+
+    <!-- HERO SLOT: ILLUSTRATION -->
+    <div class="heroCard" data-slot="hero-slot-illustration">
+      <div class="heroCard__title">図解｜家づくりの要点</div>
+      <p class="note">4コマ・図解（差し替え枠）。世界観を保ったまま説明できます。</p>
+      <div class="miniGrid" style="margin-top:10px">
+        <div class="miniBox"><b>1</b><p>悩み → 整理</p></div>
+        <div class="miniBox"><b>2</b><p>事例 → 納得</p></div>
+      </div>
+    </div>
+
+    <div class="btnRow" style="margin-top:18px">
+      <a class="btn btn--p btn--lg" href="#contact">無料相談を予約する</a>
+      <a class="btn btn--o btn--lg" href="#contact">資料を請求する</a>
+    </div>
+
+    <div class="trust" aria-label="安心要素">
+      <span>施工事例</span><span>オーナー様の声</span><span>地元密着</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: 3 POINTS（mode切替で中身を差し替え） -->
+<section class="section alt" id="points">
+  <div class="container">
+    <div class="secHead center">
+      <span class="kicker">Our Approach</span>
+      <h2>迷ったときの判断軸に。</h2>
+      <p class="lead">“世界観”と“納得”を両立するために、要点だけを短くまとめます。</p>
+    </div>
+
+    <div class="grid3">
+      <!-- CG mode -->
+      <div class="card" data-slot="points-cg">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h16" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>暮らし設計</h3>
+        <p>動線と収納を先に整え、見た目と日常のズレを減らします。</p>
+      </div>
+      <div class="card" data-slot="points-cg">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M7 7c2-2 8-2 10 0M6 12c3-2 9-2 12 0M7 17c2-2 8-2 10 0" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>熊野の木材</h3>
+        <p>床・天井・造作へ。質感と空気感を、暮らしの背景に。</p>
+      </div>
+      <div class="card" data-slot="points-cg">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 16l3-4 4 3 7-9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>パッシブ</h3>
+        <p>光と風の扱い方を設計に入れ、季節の体感差を整えます。</p>
+      </div>
+
+      <!-- Diagnosis mode -->
+      <div class="card" data-slot="points-diagnosis">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v14H4zM7 10h10M7 14h7" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>診断で整理</h3>
+        <p>土地・予算・優先順位を短時間で見える化します。</p>
+      </div>
+      <div class="card" data-slot="points-diagnosis">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v6M12 15v6M4 12h6M14 12h6" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>次の一歩</h3>
+        <p>無料相談 or 資料請求、どちらが合うかが分かります。</p>
+      </div>
+      <div class="card" data-slot="points-diagnosis">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>不安の先回り</h3>
+        <p>見積増えやすい点・決め方の順番も一緒に整理します。</p>
+      </div>
+
+      <!-- Illustration mode -->
+      <div class="card" data-slot="points-illustration">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v10H4zM7 10h6M7 13h10" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>図解で理解</h3>
+        <p>難しい話を、図と短い言葉でほどきます。</p>
+      </div>
+      <div class="card" data-slot="points-illustration">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h7M7 17h10" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>暮らしの場面</h3>
+        <p>家事・子育て・休日。暮らしのひとコマから設計します。</p>
+      </div>
+      <div class="card" data-slot="points-illustration">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.4 7-10a4 4 0 0 0-7-2 4 4 0 0 0-7 2c0 5.6 7 10 7 10z" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>世界観を保つ</h3>
+        <p>余白とトーンを崩さず、伝える要点だけを置きます。</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn btn--o" href="#contact">資料だけ見てみる</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: 不安→解決（diagnosis modeは診断UIに差し替え） -->
+<section class="section" id="resolve">
+  <div class="narrow">
+    <div class="secHead center">
+      <span class="kicker">Concerns</span>
+      <h2>不安は、先に言葉に。</h2>
+      <p class="lead">迷っている状態でのご相談が、いちばん進めやすいこともあります。</p>
+    </div>
+
+    <!-- default (cg / illustration): checklist -->
+    <div data-slot="resolve-checks">
+      <div class="checks" aria-label="よくある不安">
+        <div class="check">予算内に収まるか心配</div>
+        <div class="check">見積が後から増えそう</div>
+        <div class="check">土地がまだ決まっていない</div>
+        <div class="check">夏の暑さ・冬の寒さが気になる</div>
+        <div class="check">間取りで後悔したくない</div>
+        <div class="check">素材の手入れが不安</div>
+        <div class="check">工期や段取りが見えない</div>
+        <div class="check">相談＝契約の空気が苦手</div>
+      </div>
+      <p class="note" style="text-align:center;margin-top:14px">
+        相談のゴールは「整理と見通しづくり」。その場で決断を求めません。
+      </p>
+    </div>
+
+    <!-- diagnosis mode: compact diagnosis UI -->
+    <div class="diaBox" data-slot="resolve-diagnosis">
+      <b style="display:block;font-size:14px">30秒適正診断（簡易版）</b>
+      <p class="note" style="margin-top:6px">選ぶだけで、次の一歩（相談/資料）が整理できます。</p>
+
+      <div class="diaQ">
+        <div class="diaRow">
+          <select class="sel" id="d-land">
+            <option value="">土地の状況</option>
+            <option>未定</option>
+            <option>候補あり</option>
+            <option>決定</option>
+          </select>
+          <select class="sel" id="d-stage">
+            <option value="">検討の段階</option>
+            <option>情報収集中</option>
+            <option>比較中</option>
+            <option>具体化中</option>
+          </select>
+        </div>
+        <div class="diaRow">
+          <select class="sel" id="d-priority">
+            <option value="">優先したいこと</option>
+            <option>暮らしやすさ（動線/収納）</option>
+            <option>素材（木の質感）</option>
+            <option>快適性（暑さ寒さ）</option>
+          </select>
+          <select class="sel" id="d-budget">
+            <option value="">想定予算（目安）</option>
+            <option>2,500万〜3,000万</option>
+            <option>3,000万〜3,500万</option>
+            <option>3,500万〜4,000万</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="diaActions">
+        <button class="btn btn--p" id="diagRun" type="button">結果を見る</button>
+        <a class="btn btn--o" href="#contact">無料相談へ進む</a>
+      </div>
+
+      <div class="note" id="diagResult" style="margin-top:10px;display:none"></div>
+    </div>
+
+    <!-- mid CTA (fixed placement #2) -->
+    <div style="text-align:center;margin-top:18px">
+      <a class="btn btn--p btn--lg" href="#contact">無料相談を予約する</a>
+      <div class="note" style="margin-top:8px">ご希望の連絡手段（LINE/メール/電話）を選べます。</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: PROOF（事例3 + 声2） -->
+<section class="section alt" id="proof">
+  <div class="container">
+    <div class="secHead center">
+      <span class="kicker">Proof</span>
+      <h2>写真と声で、確かめる。</h2>
+      <p class="lead">世界観はそのままに、判断材料はきちんと。</p>
+    </div>
+
+    <div class="proofGrid">
+      <div class="stack">
+        <div class="caseRow" aria-label="施工事例（3枚）">
+          <div class="ph" style="height:160px">施工事例①（木・光）</div>
+          <div class="ph" style="height:160px">施工事例②（軒・外観）</div>
+          <div class="ph" style="height:160px">施工事例③（造作・収納）</div>
+        </div>
+        <p class="note">※ここは実写真に差し替えるだけで完成します（3枚が最も軽く見えます）。</p>
+      </div>
+
+      <div class="voiceList" aria-label="オーナー様の声（2つ）">
+        <div class="voice">
+          <b>暑さ寒さの体感</b>
+          <p>「夏の夕方、窓を開けると風が通るのが気持ちいい。冷房の使い方が変わりました。」</p>
+          <small>三重県／新築</small>
+        </div>
+        <div class="voice">
+          <b>動線と収納</b>
+          <p>「洗濯の流れが短くなり、毎日の負担が軽くなったと感じます。」</p>
+          <small>三重県／注文住宅</small>
+        </div>
+
+        <div class="btnRow" style="margin-top:6px">
+          <a class="btn btn--o" href="#contact">施工事例集を請求する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: PRICE（総額ミニ図） -->
+<section class="section" id="price">
+  <div class="container">
+    <div class="secHead">
+      <span class="kicker">Pricing</span>
+      <h2>価格は「総額」で考えるのが近道です。</h2>
+      <p class="lead">2,500万〜4,000万（目安）。どこで費用差が出るかを先に整理します。</p>
+    </div>
+
+    <div class="priceWrap">
+      <div class="priceMini">
+        <div class="row"><span>本体工事</span><em>中心</em></div>
+        <div class="bar"><div class="fill" style="width:68%"></div></div>
+
+        <div style="height:10px"></div>
+
+        <div class="row"><span>付帯・外構・諸費用</span><em>変動</em></div>
+        <div class="bar"><div class="fill" style="width:32%"></div></div>
+
+        <p class="note" style="margin-top:10px">※図はイメージです。土地条件・仕様で変わります。</p>
+      </div>
+
+      <div>
+        <b style="display:block;font-size:14px">見積が増えやすい項目（例）</b>
+        <ul class="list" style="margin-top:10px">
+          <li>外構（後回しにすると不足しやすい）</li>
+          <li>造作家具・特注建具</li>
+          <li>地盤改良（調査後に判明することがあります）</li>
+          <li>照明・カーテン・家具</li>
+        </ul>
+        <div class="btnRow" style="margin-top:14px">
+          <a class="btn btn--p" href="#contact">概算の見通しを作る</a>
+          <a class="btn btn--o" href="#contact">資料で確認する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: FAQ（8問＋誤解5） -->
+<section class="section alt" id="faq">
+  <div class="narrow">
+    <div class="secHead center">
+      <span class="kicker">FAQ</span>
+      <h2>不安に、先にお答えします。</h2>
+      <p class="lead">よくある質問を短くまとめました（詳細は相談で整理します）。</p>
+    </div>
+
+    <div class="faq" role="list">
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>土地が未定でも相談できますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">はい。土地探しと家づくりを同時に進める方が、間取りや快適性の判断がしやすくなります。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>相談したら契約の話になりますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">初回は整理と見通しづくりが中心です。その場で決断を求めることはありません。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>パッシブ設計は費用が増えますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">基本は“設計の工夫”で取り入れます。仕様（サッシ等）を上げる場合は変動するため、優先順位と合わせて整理します。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>木の家は手入れが大変ですか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">普段は乾拭きや掃除機で十分です。部位と仕上げの選び方で、負担を調整できます。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>見積が後から増えるのが不安です。</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">増えやすい項目を先に一覧化し、見積の前提条件を明確にします。想定外を減らす進め方です。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>連絡手段は選べますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">LINE／メール／電話から選べます。やり取りの頻度もご希望に合わせます。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>リフォームでも相談できますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">もちろんです。現地条件を見て、できること／難しいことを切り分けてご提案します。</div></div>
+      </div>
+      <div class="faqItem" role="listitem">
+        <button class="faqQ" type="button"><span>工期の目安はありますか？</span><span class="badge">＋</span></button>
+        <div class="faqA"><div class="faqAin">内容により異なりますが、段取りを分解して目安をご案内します。先に全体像を共有します。</div></div>
+      </div>
+    </div>
+
+    <div class="misTitle">よくある誤解（短く）</div>
+    <div class="mis">
+      <div><s>自然素材は高い</s><b>→ 部位ごとの配分で調整できます</b></div>
+      <div><s>パッシブは南向きだけ</s><b>→ 土地条件に合わせて設計します</b></div>
+      <div><s>相談＝契約</s><b>→ まずは整理と見通しづくりです</b></div>
+      <div><s>木は傷が怖い</s><b>→ 素材選びでストレスを調整できます</b></div>
+      <div><s>リフォームは住めない</s><b>→ 範囲次第で住みながらの例もあります</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: FINAL CTA（フォーム短く／2導線） -->
+<section class="final" id="contact">
+  <div class="container">
+    <div class="secHead center">
+      <span class="kicker">Next Step</span>
+      <h2 style="color:#fff">無料相談／資料請求</h2>
+      <p class="lead">迷っている今こそ、判断材料を揃えるところから。</p>
+    </div>
+
+    <div class="ctaGrid">
+      <div class="ctaCard">
+        <h3>無料相談（約60分）</h3>
+        <p>要望整理・概算の考え方・次の一歩まで。決めなくて大丈夫です。</p>
+        <form class="form" id="formConsult">
+          <input class="inp" type="text" placeholder="お名前（必須）" required />
+          <input class="inp" type="email" placeholder="メール（必須）" required />
+          <select class="inp" required>
+            <option value="">ご希望の連絡手段</option>
+            <option>LINE</option><option>メール</option><option>電話</option>
+          </select>
+          <button class="submit" type="submit">無料相談を予約する</button>
+          <div class="note">※個人情報はお問い合わせ対応の目的以外に利用しません。</div>
+        </form>
+      </div>
+
+      <div class="ctaCard">
+        <h3>資料請求（無料）</h3>
+        <p>施工事例・総額の考え方・比較の軸をまとめてお送りします。</p>
+        <form class="form" id="formDoc">
+          <input class="inp" type="text" placeholder="お名前（必須）" required />
+          <input class="inp" type="email" placeholder="メール（必須）" required />
+          <select class="inp" required>
+            <option value="">検討の段階</option>
+            <option>情報収集中</option><option>比較中</option><option>具体化中</option>
+          </select>
+          <button class="submit" type="submit">資料を請求する</button>
+          <div class="note">※メール送付（または郵送）など運用に合わせて差し替え可能です。</div>
+        </form>
+      </div>
+    </div>
+
+    <div class="assure">連絡手段を選べます ／ 相談後に決めなくて大丈夫です ／ 他社比較中でも歓迎しています</div>
+  </div>
+</section>
+
+<!-- SECTION 8: FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="brand">
+      <b>アート・宙</b>
+      <small>Mie · Custom Home &amp; Reform</small>
+    </div>
+    <div class="row2">
+      <span>© アート・宙. All rights reserved.</span>
+      <span>三重の家づくりを、丁寧に。</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE CTA BAR -->
+<div class="mbar" id="mbar" aria-label="モバイルCTA">
+  <a class="btn btn--p" href="#contact">無料相談</a>
+  <a class="btn btn--o" href="#contact">資料請求</a>
+</div>
+
+<script>
+/* header shadow */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 18));
+
+/* mode switch */
+const btns = document.querySelectorAll('[data-mode-btn]');
+const setMode = (mode) => {
+  document.body.setAttribute('data-mode', mode);
+  btns.forEach(b => b.setAttribute('aria-pressed', b.dataset.modeBtn === mode ? 'true' : 'false'));
+  // swap resolve section slot
+  const checks = document.querySelector('[data-slot="resolve-checks"]');
+  const dia = document.querySelector('[data-slot="resolve-diagnosis"]');
+  if (checks && dia) {
+    if (mode === 'diagnosis') { checks.style.display = 'none'; dia.style.display = 'block'; }
+    else { checks.style.display = 'block'; dia.style.display = 'none'; }
+  }
+};
+btns.forEach(b => b.addEventListener('click', () => setMode(b.dataset.modeBtn)));
+setMode('cg');
+
+/* faq accordion */
+document.querySelectorAll('.faqQ').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faqItem');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faqItem').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* diagnosis simple result */
+const run = document.getElementById('diagRun');
+const res = document.getElementById('diagResult');
+if (run && res) {
+  run.addEventListener('click', () => {
+    const land = document.getElementById('d-land').value;
+    const stage = document.getElementById('d-stage').value;
+    const prio = document.getElementById('d-priority').value;
+    let msg = "結果：";
+    if (!land || !stage || !prio) msg += "まずは3項目を選ぶと、方向性が整理しやすくなります。";
+    else if (land === "未定") msg += "土地探しの軸づくりから。資料請求→無料相談の順がスムーズです。";
+    else if (stage === "比較中") msg += "比較の軸を揃えると迷いが減ります。無料相談で整理がおすすめです。";
+    else msg += "具体化が進んでいる段階です。無料相談で概算と優先順位を合わせましょう。";
+    res.textContent = msg;
+    res.style.display = 'block';
+  });
+}
+
+/* forms demo */
+['formConsult','formDoc'].forEach(id=>{
+  const f = document.getElementById(id);
+  if(!f) return;
+  f.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const btn = f.querySelector('button[type="submit"]');
+    const old = btn.textContent;
+    btn.textContent = '送信しました';
+    btn.disabled = true;
+    setTimeout(()=>{ btn.textContent = old; btn.disabled = false; f.reset(); }, 1800);
+  });
+});
+</script>
+</body>
+</html>
